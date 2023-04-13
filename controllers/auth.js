@@ -21,29 +21,62 @@ exports.signup = (req, res) => {
   <head>
     <title>Sign Up</title>
     <style>
-      /* Add some styles to the form elements */
-      input[type="email"],
-      input[type="password"],
-      input[type="text"] {
-        display: block;
-        margin: 10px 0;
-        padding: 10px;
-        width: 100%;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-      }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
       input[type="submit"] {
-        background-color: #4caf50;
+        background-color: #4CAF50;
         color: white;
+        padding: 14px 20px;
+        margin-top: 20px;
         border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
+        border-radius: 4px;
         cursor: pointer;
+        transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
       }
       input[type="submit"]:hover {
-        background-color: #3e8e41;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        transform: translateY(-2px);
+      }
+      
+      input[type="submit"]:active {
+        transform: translateY(2px);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
       }
     </style>
   </head>
@@ -61,6 +94,18 @@ exports.signup = (req, res) => {
 
       <input type="submit" value="Sign Up" />
     </form>
+    <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch('/api/v1/auth/register', {
+          method: 'POST',
+          body: formData,
+        });
+        console.log("Done");
+      });
+    </script>
   </body>
 </html>
 
