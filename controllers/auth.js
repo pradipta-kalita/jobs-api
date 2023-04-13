@@ -49,7 +49,7 @@ exports.signup = (req, res) => {
   </head>
   <body>
     <h1>Sign Up</h1>
-    <form method="POST" action="/register">
+    <form method="POST" action="/api/v1/auth/register">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required />
 
