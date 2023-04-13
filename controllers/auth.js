@@ -13,6 +13,7 @@ exports.register = async (req, res) => {
     token,
   });
 };
+
 exports.signup = (req, res) => {
   res.send(`
   <!DOCTYPE html>
@@ -48,7 +49,7 @@ exports.signup = (req, res) => {
   </head>
   <body>
     <h1>Sign Up</h1>
-    <form method="POST" action="/signup">
+    <form method="POST" action="/register">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required />
 
